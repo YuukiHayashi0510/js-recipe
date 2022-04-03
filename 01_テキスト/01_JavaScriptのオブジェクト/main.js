@@ -17,4 +17,18 @@ const hikakin = {
 
 // [やってみよう]
 // hikakin オブジェクト を真似して自分のプロフィールをオブジェクトで作ってください。
-// オブジェクトにはたくさんのプロパティを追加してください。
+// オブジェクトにはたくさんのプロパティを追加してください
+
+const rinrin = {
+  name: "りんりん",
+  age: 20,
+  hobbies: ["ウマ娘", "プログラミング"],
+  isHappy: true,
+  address: {
+    country: "日本",
+    city: "福岡",
+  },
+  sayHello: function () {
+    console.log("こんにちは！")
+  },
+}
