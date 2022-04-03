@@ -15,8 +15,16 @@
 
       const display = document.getElementById("display")
       const button = document.getElementById("button")
+      // 元々のテキスト内容
+      // button.onclick = function () {
+      //   display.textContent = "クリックされた！！"
+      // }
+
+      // countet app
+      let count = 0
       button.onclick = function () {
-        display.textContent = "クリックされた！！"
+        count++
+        display.textContent = count
       }
     </script>
   </body>
