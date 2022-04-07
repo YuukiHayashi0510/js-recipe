@@ -1,6 +1,6 @@
 // 発展３Calculator.app
 
-var result = document.getElementById("result")
+let result = document.getElementById("result")
 const acButton = document.getElementById("AC")
 const surplusButton = document.getElementById("surplus")
 const divButton = document.getElementById("div")
@@ -20,18 +20,13 @@ const zeroButton = document.getElementById("zero")
 const pointButton = document.getElementById("point")
 const cButton = document.getElementById("C")
 const equalButton = document.getElementById("equal")
+// ope1 ==> 最初の数字
+let ope1 = ""
+// ope2 ==> もう1個の数字
+let ope2 = ""
+// 演算記号
+let opesymbol = ""
 
-// inputのValueは文字列なので、文字列を足していってい計算式にする
-function edit(elem) {
-  result.value += elem.value
-}
-
-surplusButton.onclick = function () {
-  result.value += surplusButton.value
-}
-divButton.onclick = function () {
-  result.value += divButton.value
-}
 sevenButton.onclick = function () {
   result.value += sevenButton.value
 }
@@ -40,9 +35,6 @@ eightButton.onclick = function () {
 }
 nineButton.onclick = function () {
   result.value += nineButton.value
-}
-multiplyButton.onclick = function () {
-  result.value += multiplyButton.value
 }
 fourButton.onclick = function () {
   result.value += fourButton.value
@@ -53,32 +45,71 @@ fiveButton.onclick = function () {
 sixButton.onclick = function () {
   result.value += sixButton.value
 }
-minusButton.onclick = function (mi) {
-  result.value += minusButton.value
-}
 oneButton.onclick = function () {
   result.value += oneButton.value
 }
 twoButton.onclick = function () {
   result.value += twoButton.value
 }
-threeButton.onclick = function (th) {
+threeButton.onclick = function () {
   result.value += threeButton.value
 }
-addButton.onclick = function () {
-  result.value += addButton.value
-}
-zeroButton.onclick = function (z) {
+zeroButton.onclick = function () {
   result.value += zeroButton.value
 }
-pointButton.onclick = function (po) {
+// 小数点
+pointButton.onclick = function () {
   result.value += pointButton.value
 }
 
-// new Function構文で関数を作る
-// result.value＝＞計算式になっているので、returnで返せば計算結果になる
+// 演算記号
+minusButton.onclick = function () {
+  ope1 = Number(result.value)
+  result.value += minusButton.value
+}
+multiplyButton.onclick = function () {
+  ope1 = Number(result.value)
+  result.value += multiplyButton.value
+}
+surplusButton.onclick = function () {
+  ope1 = Number(result.value)
+  result.value += surplusButton.value
+}
+divButton.onclick = function () {
+  ope1 = Number(result.value)
+  result.value += divButton.value
+}
+addButton.onclick = function () {
+  ope1 = Number(result.value)
+  result.value += addButton.value
+}
+
+// 計算結果
 equalButton.onclick = function () {
-  result.value = new Function("return " + result.value)()
+  for (let index = 0; index < result.value.length; index++) {
+    if (
+      result.value[index] === addButton.value ||
+      result.value[index] === minusButton.value ||
+      result.value[index] === multiplyButton.value ||
+      result.value[index] === divButton.value ||
+      result.value[index] === surplusButton.value
+    ) {
+      ope2 = Number(result.value.slice(index + 1, result.value.length))
+      opesymbol = result.value[index]
+      if (opesymbol === addButton.value) {
+        result.value = ope1 + ope2
+      } else if (opesymbol === minusButton.value) {
+        result.value = ope1 - ope2
+      } else if (opesymbol === multiplyButton.value) {
+        result.value = ope1 * ope2
+      } else if (opesymbol === divButton.value) {
+        result.value = ope1 / ope2
+      } else if (opesymbol === surplusButton.value) {
+        result.value = ope1 % ope2
+      }
+      return
+    }
+  }
 }
 
 // ACボタン、全削除
