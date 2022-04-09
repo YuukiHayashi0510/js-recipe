@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>WebExpertコーステンプレート</title>
+  </head>
+  <body>
+    <!-- 問題文 -->
+    <h1>林侑生はなんと読むでしょうか？？</h1>
+    <!-- 選択肢3つ横並びbutton -->
+    <button id="False1">しんじ</button>
+    <button id="False2">ゆうせい</button>
+    <button id="True">ゆうき</button>
+    <!-- 空のタグ（答え表示用） -->
+    <div id="display"></div>
+    <img id="image" src="./hatena.png" width="300px" />
+    <script>
+      // buttonの要素を取得
+      const false1Button = document.getElementById("False1")
+      const false2Button = document.getElementById("False2")
+      const trueButton = document.getElementById("True")
+      // 空タグの要素を取得
+      const display = document.getElementById("display")
+
+      // image
+      const image = document.getElementById("image")
+
+      // それぞれのonclickを定義
+      // textContentに再代入
+      false1Button.onclick = function () {
+        display.textContent = "残念阿呆！！"
+        // shinji srcに再代入
+        image.src = "shinji.png"
+        false1Button.disabled = true
+      }
+      false2Button.onclick = function () {
+        display.textContent = "残念！"
+        // fuseikai
+        image.src = "fuseikai.jpeg"
+        false2Button.disabled = true
+      }
+      trueButton.onclick = function () {
+        display.textContent = "正解"
+        // webex
+        image.src = "webex.png"
+        trueButton.disabled = true
+      }
+    </script>
+  </body>
+</html>
+
+<!-- === このメッセージは消しても構いません === -->
+
+<!-- GeekSalon WebExpertコースのペアプロで使用するためのテンプレートです。 -->
+<!-- ✅ 👈のメニューから一番下の「👬」のアイコンを選んで -->
+<!--    Live Modeを「Everyone cab edit」に変更した後、 -->
+<!--    「You're live!」の下、「Stop Session」の上、にあるリンクをShareしましょう -->
+<!-- ✅ CodeSandBoxはVS Codeとほぼ同じ様に扱えます。 -->
+<!-- ✅ 👉にある画面が実行画面です。 -->
+<!-- ✅ 👉の👇にある「Console」が実行時のConsoleになります。 -->
+<!--    たまに挙動がおかしい時があるので気をつけましょう。 -->
+
+<!-- =============================== -->
