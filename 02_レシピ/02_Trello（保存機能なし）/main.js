@@ -33,3 +33,11 @@ const createCard = function (text) {
   card.append(deleteButton)
   return card
 }
+
+// 発展 ★ - エンターキー
+window.onkeydown = function (e) {
+  // keydown で押されたキーがエンターかつinputが空でなければ
+  if (e.key === "Enter" && inputElement.value !== "") {
+    addButton.onclick()
+  }
+}
