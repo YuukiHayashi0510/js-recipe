@@ -1,16 +1,31 @@
-const inputElement = document.getElementById("input-todo")
-const container = document.getElementById("cards-container")
-const addButton = document.getElementById("add-button")
+const inputElement = document.getElementsByClassName("input-todo")
+const container = document.getElementsByClassName("cards-container")
+const addButton = document.getElementsByClassName("input-button")
 
-addButton.onclick = function () {
-  // 入力欄のテキストを代入
-  const text = inputElement.value
+for (let i = 0; i < inputElement.length; i++) {
+  addButton[i].onclick = function (e) {
+    // 入力欄のテキストを代入
+    const text = e.path[1].children[0].value
 
-  // カード作成
-  const card = createCard(text)
-  container.append(card)
+    // カード作成
+    const card = createCard(text)
+    container[i].append(card)
 
-  inputElement.value = ""
+    e.path[1].children[0].value = ""
+  }
+  // 発展 ★ - エンターキー
+  window.onkeydown = function (e) {
+    // keydown で押されたキーがエンターかつinputが空でなければ
+    if (e.key === "Enter" && inputElement[i].value !== "") {
+      const text = e.path[1].children[0].value
+
+      // カード作成
+      const card = createCard(text)
+      container[i].append(card)
+
+      e.path[1].children[0].value = ""
+    }
+  }
 }
 
 const createCard = function (text) {
@@ -32,12 +47,4 @@ const createCard = function (text) {
 
   card.append(deleteButton)
   return card
-}
-
-// 発展 ★ - エンターキー
-window.onkeydown = function (e) {
-  // keydown で押されたキーがエンターかつinputが空でなければ
-  if (e.key === "Enter" && inputElement.value !== "") {
-    addButton.onclick()
-  }
 }
