@@ -25,7 +25,7 @@ const fileNavigationList = document.getElementById("file-navigation-list")
 const editingFileTitle = document.getElementById("editing-file-title")
 const editingFileContent = document.getElementById("editing-file-content")
 const addNewFileButton = document.getElementById("add-new-file-button")
-const addNewFileInput = document.getElementById("add-new-file-input")
+// const addNewFileInput = document.getElementById("add-new-file-input")
 const fileNavigationFiles = document.getElementsByClassName(
   "file-navigation__file",
 )
@@ -65,6 +65,9 @@ const loadFiles = function () {
       }
       files[i].selected = true
       fileName.setAttribute("data-selected", files[i].selected)
+      // 編集中のファイル名を表示
+      editingFileTitle.textContent = files[i].title
+      editingFileContent.value = files[i].content
     }
 
     // li要素をfileNavigationListに追加
@@ -73,7 +76,6 @@ const loadFiles = function () {
 
   // 編集中のファイル名を表示
   editingFileTitle.textContent = files[0].title
-  //
   editingFileContent.value = files[0].content
 }
 loadFiles()
